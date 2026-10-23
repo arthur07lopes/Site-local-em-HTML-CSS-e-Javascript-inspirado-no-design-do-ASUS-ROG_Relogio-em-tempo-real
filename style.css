@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap');
+
+:root {
+    color: dark;
+    --bg: #08090d;
+    --panel: #11131b;
+    --red: #ff2948;
+    --cyan: #63f4ff;
+    --text: #f2f5fb;
+    --muted: #a2a8b8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img[hidden] {
+    display: none !important;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--text);
+    background: radial-gradient(ellipse at 75% 8%, #39111f 0, transparent 34%), var(--bg);
+    font-family: 'Rajdhani', 'Arial Narrow', sans-serif;
+}
+
+.rog-shell {
+    width: min(1120px, 92%);
+    min-height: 100vh;
+    margin: auto;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    align-content: space-between;
+    gap: 24px;
+    padding: 28px 0;
+}
+
+.topline,
+.bottomline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid #343744;
+    padding-bottom: 12px;
+    font: 700 12px 'Orbitron', sans-serif;
+    letter-spacing: .12em;
+}
+
+.brand {
+    margin: 0;
+    color: var(--red);
+    font-size: 18px;
+}
+
+.brand span,
+.live-label,
+.bottomline {
+    color: var(--muted);
+}
+
+.live-label {
+    margin: 0;
+}
+
+.clock-panel {
+    padding: clamp(24px, 5vw, 58px);
+    border-left: 4px solid var(--red);
+    background: linear-gradient(110deg, #151722, #0c0d13 75%);
+    box-shadow: 12px 12px 0 #08090d, 13px 13px 0 #3e1322;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    font: 700 11px 'Orbitron', sans-serif;
+    letter-spacing: .2em;
+}
+
+h1 {
+    margin: 12px 0 8px;
+    font: 700 clamp(22px, 4vw, 38px) 'Orbitron', sans-serif;
+}
+
+.clock {
+    display: block;
+    color: var(--red);
+    font: 800 clamp(48px, 10vw, 106px) 'Orbitron', monospace;
+    letter-spacing: .04em;
+    text-shadow: 0 0 24px #ff29484d;
+}
+
+.current-date {
+    margin: 12px 0 0;
+    color: var(--text);
+    font-size: 20px;
+}
+
+.device-panel {
+    margin: 0;
+}
+
+.device-stage {
+    position: relative;
+    min-height: 180px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid #393d4a;
+    background: linear-gradient(135deg, #171a26, #090a0f 68%);
+}
+
+.device-stage::before,
+.device-stage::after {
+    content: '';
+    position: absolute;
+    top: -25%;
+    width: 28%;
+    height: 150%;
+    background: var(--red);
+    opacity: .08;
+    transform: skewX(-28deg);
+}
+
+.device-stage::before {
+    left: 12%;
+}
+
+.device-stage::after {
+    right: 12%;
+    background: var(--cyan);
+}
+
+.stage-mark {
+    position: absolute;
+    z-index: 1;
+    top: 12px;
+    left: 16px;
+    color: #8c91a1;
+    font: 700 10px 'Orbitron', sans-serif;
+    letter-spacing: .18em;
+}
+
+.device-image {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: min(520px, 86%);
+    max-height: 270px;
+    object-fit: contain;
+    background: transparent;
+    border-radius: 0;
+}
+
+.stage-fallback {
+    position: absolute;
+    margin: 0;
+    color: #343846;
+    font: 800 clamp(30px, 6vw, 70px) 'Orbitron', sans-serif;
+    letter-spacing: .12em;
+    text-align: center;
+}
+
+.device-stage:has(.device-image:not([hidden])) .stage-fallback {
+    display: none;
+}
+
+.device-panel figcaption {
+    padding-top: 8px;
+    color: var(--muted);
+    font: 700 10px 'Orbitron', sans-serif;
+    letter-spacing: .08em;
+}
+
+.device-panel figcaption a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.bottomline {
+    border-top: 1px solid #343744;
+    border-bottom: 0;
+    padding: 12px 0 0;
+}
+
+:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 4px;
+}
+
+@media (max-width: 620px) {
+    .rog-shell {
+        gap: 18px;
+        padding: 18px 0;
+    }
+
+    .topline,
+    .bottomline {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .clock-panel {
+        padding: 24px 18px;
+    }
+
+    .clock {
+        letter-spacing: 0;
+    }
+
+    .device-stage {
+        min-height: 150px;
+    }
+}
